@@ -1,0 +1,22 @@
+
+input::placeholder {
+  font-size: 12px;
+}
+
+input.form-control {
+  font-size: 12px !important;
+}
+
+.button{
+  font-size: 15px !important;
+}
+
+.video-bg{ 
+  z-index: -1; 
+  filter: grayscale(100%);
+}
+
+.logo-brand{
+  width: 150px; 
+  height: 50px;
+}
