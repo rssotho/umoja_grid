@@ -58,7 +58,7 @@ class Command(BaseCommand):
 
         Race.objects.filter(~Q(race__in=races)).delete()
         for race in races:
-            obj, created = Race.objects.get_or_create(race=race, other_race='')
+            obj, created = Race.objects.get_or_create(race=race)
             print(f"{'Created' if created else 'Exists'}: {obj.race}")
 
     def create_title(self):
@@ -67,40 +67,6 @@ class Command(BaseCommand):
         Title.objects.filter(~Q(title__in=titles)).delete()
         for title in titles:
             Title.objects.get_or_create(title=title)
-
-    def handle(self, *args, **options):
-
-        self.stdout.write(self.style.WARNING('---- Populate User Types ----------------'))
-        self.stdout.write(self.style.HTTP_INFO('Populating static User Types...'))
-        self.create_user_types()
-        self.stdout.write(self.style.SUCCESS('Static User Types populated successfully!'))
-        self.stdout.write(self.style.HTTP_INFO('-----------------------------------------'))
-
-        self.stdout.write(self.style.WARNING('---- Populate Province ----------------'))
-        self.stdout.write(self.style.HTTP_INFO('Populating static Provice...'))
-        self.create_province()
-        self.stdout.write(self.style.SUCCESS('Static Provice populated successfully!'))
-        self.stdout.write(self.style.HTTP_INFO('-----------------------------------------'))
-
-        self.stdout.write(self.style.WARNING('---- Populate Gender ----------------'))
-        self.stdout.write(self.style.HTTP_INFO('Populating static Gender ...'))
-        self.create_gender()
-        self.stdout.write(self.style.SUCCESS('Static Gender populated successfully!'))
-        self.stdout.write(self.style.HTTP_INFO('-----------------------------------------'))
-
-        self.stdout.write(self.style.WARNING('---- Populate Race ----------------'))
-        self.stdout.write(self.style.HTTP_INFO('Populating static Race ...'))
-        self.create_race()
-        self.stdout.write(self.style.SUCCESS('Static Race populated successfully!'))
-        self.stdout.write(self.style.HTTP_INFO('-----------------------------------------'))
-
-        self.stdout.write(self.style.WARNING('---- Populate Title ----------------'))
-        self.stdout.write(self.style.HTTP_INFO('Populating static Title ...'))
-        self.create_title()
-        self.stdout.write(self.style.SUCCESS('Static Title populated successfully!'))
-        self.stdout.write(self.style.HTTP_INFO('-----------------------------------------'))
-
-        self.stdout.write(self.style.SUCCESS('All static data populated successfully!'))
 
     def handle(self, *args, **options):
 

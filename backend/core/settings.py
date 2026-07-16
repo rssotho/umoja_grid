@@ -48,13 +48,15 @@ INSTALLED_APPS = [
     'system_management'
 ]
 
+AUTH_USER_MODEL = 'system_management.User'
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
@@ -157,6 +159,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication
 AUTHENTICATION_BACKENDS = [
-    'system_management.custom_auth.authenticate.EmailOrPhoneBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]

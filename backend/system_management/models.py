@@ -121,7 +121,6 @@ class Gender(models.Model):
 class Race(models.Model):
 
     race = models.CharField(max_length=255)
-    other_race = models.CharField(max_length=255)
 
 
 class Title(models.Model):
